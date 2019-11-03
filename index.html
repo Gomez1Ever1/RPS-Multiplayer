@@ -4,7 +4,9 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/script.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
 
 <body>
@@ -21,32 +23,26 @@
                 </tr>
             </thead>
             <tbody id="newTrainInfo">
-                <tr>
-                    <th scope="row" id="trainName"></th>
-                    <td id="destination"></td>
-                    <td id="freq"></td>
-                    <td id="nextArrival"></td>
-                    <td id="minAway"></td>
-                </tr>
+
         </table>
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="Train-Name">Train Name:</label>
-                        <input type="text" id="userTrain" class="form-control inputArr">
+                        <input type="text" id="userTrain" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="destinat">Destination:</label>
-                        <input type="text" id="destination1" class="form-control inputArr">
-                    </div>
-                    <div class="form-group">
-                        <label for="First-train-time">First Train Time:</label>
-                        <input type="text" id="firstTrain" class="form-control inputArr">
+                        <input type="text" id="destination1" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="freq">Frequency:</label>
-                        <input type="text" id="frequency1" class="form-control inputArr">
+                        <input type="text" id="frequency1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="Next-train-time">Next Train Time:</label>
+                        <input type="text" id="nextArrival" class="form-control">
                     </div>
                     <button class="btn" type="submit" id="btnSubmit">Submit</button>
                 </div>
@@ -58,9 +54,7 @@
     </div>
 
 </body>
-<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-<!-- Specific Firebase products we want (Database) -->
-<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
 <script src="script.js" type="text/javascript"></script>
 
 </html>

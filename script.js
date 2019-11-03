@@ -12,38 +12,43 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
-
-
     function appendInputs() {
         trainSched = $("<tr>")
             .attr("id", "newTR");
-        for (let i = 0; i < 4; i++) {
-            var newTd = $("<td>");
+        for (var params in objInputs) {
+            var newTd = $("<td>")
+                .text($(params));
             $("#newTR").append(newTd);
-        }
+        };
         $("#newTrainInfo").append(trainSched);
     }
-    var arrInputs = [];
+    var objInputs = ({
+        train: userTrain,
+        dest: destination1,
+        frequency: frequency1,
+        next: nextArrival
+
+    });
+    database.ref().push({
+        userTrain: userTrain,
+        destination1: destination1,
+        frequency1: frequency1,
+        nextArrival: nextArrival,
+        trainSched: trainSched
+    });
+    var userTrain = $("#userTrain").val().trim();
+    var destination1 = $("#destination1").val().trim();
+    var frequency1 = $("#frequency1").val().trim();
+    var nextArrival = $("#nextTrain").val().trim();
+    //database.on(childSnapshot)
     function varInputs() {
-        userTrain = $("#userTrain").val();
-        destination1 = $("#destination1").val();
-        firstTrain = $("#firstTrain").val();
-        frequency1 = $("#frequency1").val();
-        arrInputs.push(userTrain, destination1, firstTrain, frequency1);
-        console.log(arrInputs)
+
+        console.log(userTrain)
     }
     $(document).on("click", "#btnSubmit", function () {
-        database.ref().set({
-            userTrain: userTrainV,
-            destination1: destination1V,
-            firstTrain: firstTrainV,
-            frequency1: frequency1V,
-            trainSched: trainSched
-        });
+
         varInputs();
         appendInputs();
         console.log("works")
     })
 })
-
-
